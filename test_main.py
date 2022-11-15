@@ -3,9 +3,10 @@ import main
 
 class TestBot(unittest.TestCase):
     def test_get_word(self):
-        result = main.get_word('старт')
-    def test_find(self):
-        result = main.get_word('Cтарт')
+        print('![] test lower case')
+        main.get_word('старт')
+        print('![] test upper case')
+        main.get_word('Старт')
+        print('![] test caps lock')
+        main.get_word('СТАРТ')
 
-    def test_err(self):
-        result = main.get_word('Start')

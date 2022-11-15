@@ -12,7 +12,6 @@ def welcome(message: Message):
 
 @bot.message_handler(content_types=['text'])
 def word_find(message: Message):
-    print(message)
     for text in get_word(message.text):
         bot.send_message(message.chat.id, text)
 

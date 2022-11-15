@@ -1,0 +1,32 @@
+name: Testing
+
+on:
+  push:
+    branches:
+      test
+
+jobs:
+  test:
+      runs-on: ubuntu-latest
+
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.10.8
+
+    - name: Download dependencies
+      run: |
+        pip3 install --upgrade pip
+        pip3 install pytest
+        pip3 install yapf
+        f [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Lint code
+      run: yapf -r -p .
+
+    - name: Test code
+      run: |
+        pytest

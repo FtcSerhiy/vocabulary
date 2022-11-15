@@ -6,6 +6,7 @@ from telebot.types import Message
 
 bot = telebot.TeleBot(config.TOKEN)
     
+
 @bot.message_handler(commands=['start'])
 def welcome(message: Message):
     bot.send_message(message.chat.id, 'Добридень, шановний!')
@@ -26,3 +27,4 @@ def get_word(word: str) -> list:
 
 if __name__ == '__main__':
     bot.polling(none_stop=True)
+

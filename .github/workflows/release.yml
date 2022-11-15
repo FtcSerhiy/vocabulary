@@ -1,0 +1,25 @@
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    strategy:
+      runs-on: ubuntu-latest
+      fail-fast: false
+
+    steps:
+      - name: Set up python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.11
+
+        - name: Install dependencies
+          run: |
+            pip3 install --upgrade pip
+            pip3 install bs4 requests pyTelegramBotAPI
+
+        - name: Test code
+          run: |
+            python3 -m unittest
+
